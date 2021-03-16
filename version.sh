@@ -12,7 +12,7 @@ then
 elif [ "$1" = "Intro" ]
 then
   cd Introduction
-  python3 $.py
+  python3 $2.py
 
 else
   echo "no argument"
