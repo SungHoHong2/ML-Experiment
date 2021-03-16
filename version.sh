@@ -9,6 +9,11 @@ then
   git commit -m "$2"
   git push origin main
 
+elif [ "$1" = "Intro" ]
+then
+  cd Introduction
+  python3 $.py
+
 else
   echo "no argument"
 fi
