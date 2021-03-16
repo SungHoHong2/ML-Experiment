@@ -11,3 +11,5 @@ clf = GaussianNB()
 clf.fit(X, Y)
 # predict
 print(clf.predict([[-0.8, -1]]))
+# accuracy(cheat)
+print(clf.score(X, Y))
