@@ -9,10 +9,9 @@ then
   git commit -m "$2"
   git push origin main
 
-elif [ "$1" = "Intro" ]
+elif [ "$1" = "Naive" ]
 then
-  cd Introduction
-  python3 $2.py
+  python3 ud120-projects/naive_bayes/nb_author_id.py
 
 else
   echo "no argument"
