@@ -23,13 +23,17 @@ features_train, features_test, labels_train, labels_test = preprocess()
 ### your code goes here ###
 from sklearn import svm
 # clf = svm.SVC(kernel='linear')
-clf = svm.SVC(kernel='rbf', C=100)
+clf = svm.SVC(kernel='rbf', C=10000)
 
 # shrink the training set
 features_train = features_train[:len(features_train)//100]
 labels_train = labels_train[:len(labels_train)//100]
 clf.fit(features_train, labels_train)
-print('training done')
+
+print('predict', clf.predict([features_test[9]]))
+print('predict', clf.predict([features_test[25]]))
+print('predict', clf.predict([features_test[49]]))
+
 print(clf.score(features_test, labels_test))
 
 #########################################################
