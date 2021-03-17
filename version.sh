@@ -13,6 +13,11 @@ elif [ "$1" = "Naive" ]
 then
   cd ud120-projects/naive_bayes
   python3 nb_author_id.py
+
+elif [ "$1" = "SVM" ]
+then
+  python3 Introduction/SVM.py
+
 else
   echo "no argument"
 fi
