@@ -27,7 +27,7 @@ clf = GaussianNB()
 for tmp in features_train[:10]:
     print(tmp)
 
-# clf.fit(features_train, features_test)
+clf.fit(features_train, features_test)
 # print(clf.score(labels_train, labels_test))
 
 
