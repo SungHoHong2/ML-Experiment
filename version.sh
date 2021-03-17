@@ -11,8 +11,8 @@ then
 
 elif [ "$1" = "Naive" ]
 then
-  python3 ud120-projects/naive_bayes/nb_author_id.py
-
+  cd ud120-projects/naive_bayes
+  python3 nb_author_id.py
 else
   echo "no argument"
 fi
