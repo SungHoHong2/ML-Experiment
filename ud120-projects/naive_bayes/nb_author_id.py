@@ -23,13 +23,8 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #########################################################
 ### your code goes here ###
 clf = GaussianNB()
-
-for tmp in features_train[:10]:
-    print(tmp)
-
-clf.fit(features_train, features_test)
-# print(clf.score(labels_train, labels_test))
-
+clf.fit(features_train, labels_train)
+print(clf.score(features_test, labels_test))
 
 #########################################################
 
