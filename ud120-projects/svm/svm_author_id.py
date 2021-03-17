@@ -34,6 +34,10 @@ print('predict', clf.predict([features_test[9]]))
 print('predict', clf.predict([features_test[25]]))
 print('predict', clf.predict([features_test[49]]))
 
+print('predict', clf.predict([features_test[10]]))
+print('predict', clf.predict([features_test[26]]))
+print('predict', clf.predict([features_test[50]]))
+
 print(clf.score(features_test, labels_test))
 
 #########################################################
