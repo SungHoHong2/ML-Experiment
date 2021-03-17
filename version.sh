@@ -16,7 +16,8 @@ then
 
 elif [ "$1" = "SVM" ]
 then
-  python3 Introduction/SVM.py
+  cd ud120-projects/svm
+  python3 svm_author_id.py
 
 else
   echo "no argument"
