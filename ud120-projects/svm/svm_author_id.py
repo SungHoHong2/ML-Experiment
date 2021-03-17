@@ -24,6 +24,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 from sklearn import svm
 clf = svm.SVC(kernel='linear')
 clf.fit(features_train[:100], labels_train[:100])
+print('training done')
 print(clf.score(features_test[:100], labels_test[:100]))
 
 #########################################################
