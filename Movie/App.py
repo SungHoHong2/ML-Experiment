@@ -116,6 +116,7 @@ for movie in movie_ids:
 
 pd.DataFrame.from_dict(data=similar_movies, orient='index').to_csv(PATH+'similar_movies.csv', header=False)
 
+
 # Finding most similar movies using similarity matrix
 
 
