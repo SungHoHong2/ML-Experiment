@@ -9,6 +9,10 @@ then
   git commit -m "$2"
   git push origin main
 
+elif [ "$1" = "Movie" ]
+then
+  python3 Movie/App.py
+
 elif [ "$1" = "Naive" ]
 then
   cd ud120-projects/naive_bayes
