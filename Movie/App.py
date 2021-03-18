@@ -133,6 +133,5 @@ print("\nUser has {} Ratings.".format(spareMatrixTrain[usr_id,:].getnnz()))
 print("\nWe have {} users which are similar to this user".format(u_u_sim_sparse[mv_id,:].getnnz()))
 
 
-
-
-
+for tmp in u_u_sim_sparse:
+    print(tmp)
