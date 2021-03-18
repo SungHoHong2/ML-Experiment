@@ -4,11 +4,13 @@ import pandas as pd
 import numpy as np
 import os
 
-PATH = ""
+PATH = "/home/sungho/Downloads/"
 current_movie = None
+
+# construct a total_data.csv
 with open('total_data.csv','w',newline='') as total_data:
     csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-    files = ['./combined_data_1.txt','./combined_data_2.txt','./combined_data_3.txt', './combined_data_4.txt']
+    files = [PATH+'combined_data_1.txt',PATH+'combined_data_2.txt',PATH+'combined_data_3.txt', PATH+'combined_data_4.txt']
     for file in files:
         print("reading " + file)
         with open(file) as current_file:
