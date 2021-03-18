@@ -130,7 +130,7 @@ print("\nWe have {} movies which are similar to this movie".format(m_m_sim_spars
 
 usr_id = 0
 print("\nUser has {} Ratings.".format(spareMatrixTrain[usr_id,:].getnnz()))
-print("\nWe have {} users which are similar to this user".format(u_u_sim_sparse[usr_id,:].getnnz()))
+print("\nWe have {} users which are similar to this user".format(u_u_sim_sparse[:,usr_id].getnnz()))
 
 
 for tmp in u_u_sim_sparse[:10]:
