@@ -23,7 +23,6 @@ elif [ "$1" = "DT" ]
 then
   cd ud120-projects/decision_tree
   python3 dt_author_id.py
-  python3 Introduction/DecisionTree.py
 
 else
   echo "no argument"
