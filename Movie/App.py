@@ -111,13 +111,23 @@ m_m_sim_sparse = sparse.load_npz(PATH+"m_m_sim_sparse.npz")
 print(m_m_sim_sparse.shape)
 similar_movies = dict()
 
-
 # Finding most similar movies using similarity matrix
-# movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
-# for movie in movie_ids:
-#     sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
-#     similar_movies[movie] = sim_movies[:100]
-# pd.DataFrame.from_dict(data=similar_movies, orient='index').to_csv(PATH+'similar_movies.csv', header=False)
+movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
+for movie in movie_ids:
+    sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
+    similar_movies[movie] = sim_movies[:100]
+pd.DataFrame.from_dict(data=similar_movies, orient='index').to_csv(PATH+'similar_movies.csv', header=False)
+
+movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
+                           names=['movie_id', 'year_of_release', 'title'], verbose=True,
+                      index_col = 'movie_id', encoding = "ISO-8859-1")
+
+print(movie_titles.head())
+# example
+mv_id = 17770
+print("\nMovie ----->",movie_titles.loc[mv_id].values[1])
+print("\nIt has {} Ratings.".format(spareMatrixTrain[:,mv_id].getnnz()))
+print("\nWe have {} movies which are similar to this movie".format(m_m_sim_sparse[:,mv_id].getnnz()))
 
 
 
