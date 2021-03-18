@@ -29,9 +29,35 @@ data_frame = pd.read_csv(PATH+'/total_data.csv', sep=',', names=['movieId', 'use
 data_frame.date = pd.to_datetime(data_frame.date)
 data_frame.sort_values(by='date', inplace=True)
 
+# print out the top 10 rows of the data
 for row in data_frame.head(10).itertuples():
     print(row)
 
+# split the data into training and test data
+data_frame.iloc[:int(data_frame.shape[0]*0.80)].to_csv(PATH+"train.csv", index=False)
+train_data = pd.read_csv(PATH+"train.csv", parse_dates=['date'])
+data_frame.iloc[int(data_frame.shape[0]*0.80):].to_csv(PATH+"test.csv", index=False)
+test_data = pd.read_csv(PATH+"test.csv")
 
-print('howdy!')
+print("Total Train Data:")
+print("Total number of movie ratings in train data = "+str(train_data.shape[0]))
+print("Number of unique users in train data = "+str(len(np.unique(train_data["userId"]))))
+print("Number of unique movies in train data = "+str(len(np.unique(train_data["movieId"]))))
+print("Highest value of a User ID = "+str(max(train_data["userId"].values)))
+print("Highest value of a Movie ID = "+str(max(train_data["movieId"].values)))
+
+# create the spares matrix
+from scipy import sparse
+from scipy.sparse import csr_matrix
+spareMatrixTrain = sparse.csr_matrix((train_data.currentRating.values, (train_data.userId.values,train_data.movieId.values)),)
+sparse.save_npz(PATH+"spareMatrixTrain.npz", spareMatrixTrain)
+us,mv = spareMatrixTrain.shape
+elem = spareMatrixTrain.count_nonzero()
+print("Sparsity Of Training matrix : {} % ".format(  (1-(elem/(us*mv))) * 100) )
+sparseMatrixTest = sparse.csr_matrix((test_data.currentRating.values, (test_data.userId.values,test_data.movieId.values)))
+sparse.save_npz("sparseMatrixTest.npz", sparseMatrixTest)
+us,mv = sparseMatrixTest.shape
+elem = sparseMatrixTest.count_nonzero()
+print("Sparsity of Testing matrix : {} % ".format(  (1-(elem/(us*mv))) * 100) )
+
 
