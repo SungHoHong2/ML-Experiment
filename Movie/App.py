@@ -8,7 +8,7 @@ PATH = "/home/sungho/Downloads/"
 current_movie = None
 
 # construct a total_data.csv
-with open('total_data.csv','w',newline='') as total_data:
+with open(PATH+'total_data.csv','w',newline='') as total_data:
     csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
     files = [PATH+'combined_data_1.txt',PATH+'combined_data_2.txt',PATH+'combined_data_3.txt', PATH+'combined_data_4.txt']
     for file in files:
@@ -24,4 +24,8 @@ with open('total_data.csv','w',newline='') as total_data:
                         new_row.append(element)
                     csv_writer.writerow(new_row)
         print("completed " + file +"\n")
+
+data_frame = pd.read_csv('./total_data.csv', sep=',', names=['movieId', 'userId','currentRating','date'])
+data_frame.date = pd.to_datetime(data_frame.date)
+data_frame.sort_values(by='date', inplace=True)
 
