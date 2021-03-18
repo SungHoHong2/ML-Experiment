@@ -124,7 +124,7 @@ movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
 
 print(movie_titles.head())
 # example
-mv_id = 17770
+mv_id = 40
 print("\nMovie ----->",movie_titles.loc[mv_id].values[1])
 print("\nIt has {} Ratings.".format(spareMatrixTrain[:,mv_id].getnnz()))
 print("\nWe have {} movies which are similar to this movie".format(m_m_sim_sparse[:,mv_id].getnnz()))
