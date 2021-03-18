@@ -62,7 +62,7 @@ print("Sparsity of Testing matrix : {} % ".format(  (1-(elem/(us*mv))) * 100) )
 
 # create the similarity matrix
 from sklearn.metrics.pairwise import cosine_similarity
-import datetime
+from datetime import datetime
 
 def compute_user_similarity(sparse_matrix, compute_for_few=False, top=100, verbose=False, verb_for_n_rows=20):
     no_of_users, _ = sparse_matrix.shape
