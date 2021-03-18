@@ -128,9 +128,9 @@ print("\nMovie ----->",movie_titles.loc[mv_id].values[1])
 print("\nIt has {} Ratings.".format(spareMatrixTrain[:,mv_id].getnnz()))
 print("\nWe have {} movies which are similar to this movie".format(m_m_sim_sparse[:,mv_id].getnnz()))
 
-usr_id = 10
+usr_id = 0
 print("\nUser has {} Ratings.".format(spareMatrixTrain[usr_id,:].getnnz()))
-print("\nWe have {} users which are similar to this user".format(u_u_sim_sparse[mv_id,:].getnnz()))
+print("\nWe have {} users which are similar to this user".format(u_u_sim_sparse[usr_id,:].getnnz()))
 
 
 for tmp in u_u_sim_sparse[:10]:
