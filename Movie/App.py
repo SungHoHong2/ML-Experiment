@@ -99,7 +99,9 @@ def compute_user_similarity(sparse_matrix, compute_for_few=False, top=100, verbo
     return sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users)), time_taken
 
 u_u_sim_sparse, _ = compute_user_similarity(spareMatrixTrain, compute_for_few=True, top = 100, verbose=True)
+print(u_u_sim_sparse.shape)
 
+# TODO: I believe I have to save the n_n_simp_sparse.npz like what they do I guess...
 
 # Computing Movie-Movie Similarity matrix
 start = datetime.now()
@@ -109,15 +111,15 @@ m_m_sim_sparse = sparse.load_npz(PATH+"m_m_sim_sparse.npz")
 print(m_m_sim_sparse.shape)
 similar_movies = dict()
 
-movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
-for movie in movie_ids:
-    sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
-    similar_movies[movie] = sim_movies[:100]
-
-pd.DataFrame.from_dict(data=similar_movies, orient='index').to_csv(PATH+'similar_movies.csv', header=False)
-
 
 # Finding most similar movies using similarity matrix
+# movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
+# for movie in movie_ids:
+#     sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
+#     similar_movies[movie] = sim_movies[:100]
+# pd.DataFrame.from_dict(data=similar_movies, orient='index').to_csv(PATH+'similar_movies.csv', header=False)
+
+
 
 
 
