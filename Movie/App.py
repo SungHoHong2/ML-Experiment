@@ -29,8 +29,8 @@ data_frame = pd.read_csv(PATH+'/total_data.csv', sep=',', names=['movieId', 'use
 data_frame.date = pd.to_datetime(data_frame.date)
 data_frame.sort_values(by='date', inplace=True)
 
-for column_name, item in data_frame.head(10).iteritems():
-    print(column_name, item)
+for row in data_frame.head(10).itertuples():
+    print(row)
 
 
 print('howdy!')
