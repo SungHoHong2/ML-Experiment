@@ -30,10 +30,6 @@ features_train = features_train[:len(features_train)//100]
 labels_train = labels_train[:len(labels_train)//100]
 clf.fit(features_train, labels_train)
 
-print('predict', clf.predict([features_test[9]]))
-print('predict', clf.predict([features_test[25]]))
-print('predict', clf.predict([features_test[49]]))
-
 print('predict', clf.predict([features_test[10]]))
 print('predict', clf.predict([features_test[26]]))
 print('predict', clf.predict([features_test[50]]))

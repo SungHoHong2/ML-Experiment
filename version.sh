@@ -19,6 +19,10 @@ then
   cd ud120-projects/svm
   python3 svm_author_id.py
 
+elif [ "$1" = "DT" ]
+then
+  python3 Introduction/DecisionTree.py
+
 else
   echo "no argument"
 fi
