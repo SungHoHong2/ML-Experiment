@@ -47,8 +47,8 @@ current_movie = None
 # print("Highest value of a Movie ID = "+str(max(train_data["movieId"].values)))
 #
 # # create the sparse matrix
-# from scipy import sparse
-# from scipy.sparse import csr_matrix
+from scipy import sparse
+from scipy.sparse import csr_matrix
 # spareMatrixTrain = sparse.csr_matrix((train_data.currentRating.values, (train_data.userId.values,train_data.movieId.values)),)
 # sparse.save_npz(PATH+"spareMatrixTrain.npz", spareMatrixTrain)
 # us,mv = spareMatrixTrain.shape
