@@ -8,22 +8,22 @@ PATH = "/home/sungho/Downloads/"
 current_movie = None
 
 # construct a total_data.csv (need to run only once)
-with open(PATH+'total_data.csv','w',newline='') as total_data:
-    csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-    files = [PATH+'combined_data_1.txt']
-    for file in files:
-        print("reading " + file)
-        with open(file) as current_file:
-            for current_row in current_file:
-                current_row = current_row.strip()
-                if current_row[-1] == ":":
-                    current_movie = current_row[:len(current_row)-1]
-                else:
-                    new_row = [current_movie]
-                    for element in current_row.split(","):
-                        new_row.append(element)
-                    csv_writer.writerow(new_row)
-        print("completed " + file +"\n")
+# with open(PATH+'total_data.csv','w',newline='') as total_data:
+#     csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+#     files = [PATH+'combined_data_1.txt']
+#     for file in files:
+#         print("reading " + file)
+#         with open(file) as current_file:
+#             for current_row in current_file:
+#                 current_row = current_row.strip()
+#                 if current_row[-1] == ":":
+#                     current_movie = current_row[:len(current_row)-1]
+#                 else:
+#                     new_row = [current_movie]
+#                     for element in current_row.split(","):
+#                         new_row.append(element)
+#                     csv_writer.writerow(new_row)
+#         print("completed " + file +"\n")
 
 data_frame = pd.read_csv(PATH+'/total_data.csv', sep=',', names=['movieId', 'userId','currentRating','date'])
 data_frame.date = pd.to_datetime(data_frame.date)
@@ -109,19 +109,18 @@ m_m_sim_sparse = sparse.load_npz(PATH+"m_m_sim_sparse.npz")
 print('m_m_sim_sparse shape', m_m_sim_sparse.shape)
 
 # Finding most similar movies using similarity matrix
-movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
-similar_movies = dict()
-for movie in movie_ids:
-    sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
-    similar_movies[movie] = sim_movies[:100]
-
+# movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
+# similar_movies = dict()
+# for movie in movie_ids:
+#     sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
+#     similar_movies[movie] = sim_movies[:100]
 # testing simlilar movies for movie 20
 # print(similar_movies[20])
-# movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
-#                            names=['movie_id', 'year_of_release', 'title'], verbose=True,
-#                       index_col = 'movie_id', encoding = "ISO-8859-1")
 
 # example predicting similar movies id =40
+movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
+                           names=['movie_id', 'year_of_release', 'title'], verbose=True,
+                      index_col = 'movie_id', encoding = "ISO-8859-1")
 mv_id = 40
 print("\nMovie ----->",movie_titles.loc[mv_id].values[1])
 print("\nIt has {} Ratings.".format(spareMatrixTrain[:,mv_id].getnnz()))
