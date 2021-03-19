@@ -109,13 +109,13 @@ def compute_user_similarity(sparse_matrix, compute_for_few=False, top=100, verbo
     if verbose: print('Creating Sparse matrix from the computed similarities')
     return sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users)), time_taken
 
-u_u_sim_sparse, _ = compute_user_similarity(spareMatrixTrain, compute_for_few=True, top = 100, verbose=True)
+u_u_sim_sparse, _ = compute_user_similarity(sparseMatrixTrain, compute_for_few=True, top = 100, verbose=True)
 sparse.save_npz(PATH+"u_u_sim_sparse.npz", u_u_sim_sparse)
 u_u_sim_sparse = sparse.load_npz(PATH+"u_u_sim_sparse.npz")
 print('u_u_sim_sparse shape', u_u_sim_sparse.shape)
 
 # Computing Movie-Movie Similarity matrix
-m_m_sim_sparse = cosine_similarity(spareMatrixTrain.T, dense_output=False)
+m_m_sim_sparse = cosine_similarity(sparseMatrixTrain.T, dense_output=False)
 sparse.save_npz(PATH+"m_m_sim_sparse.npz", m_m_sim_sparse)
 m_m_sim_sparse = sparse.load_npz(PATH+"m_m_sim_sparse.npz")
 print('m_m_sim_sparse shape', m_m_sim_sparse.shape)
