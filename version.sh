@@ -28,6 +28,11 @@ then
   cd ud120-projects/decision_tree
   python3 dt_author_id.py
 
+elif [ "$1" = "Dataset" ]
+then
+  cd ud120-projects/datasets_questions
+  python3 explore_enron_data.py
+
 else
   echo "no argument"
 fi
