@@ -37,8 +37,8 @@ for row in org_rows[:top]:
     usr = usr + 1
     sim = cosine_similarity(sparseMatrixTrain.getrow(row), sparseMatrixTrain).ravel()
     rows += [row] * top
-    cols += sim.argsort()[-top:]
-    data += sim[top_sim_ind]
+    cols.extend(sim.argsort()[-top:])
+    data.extend(sim[top_sim_ind])
     if temp % 20 == 0:
         print("computing done for "+str(usr)+" users")
 
