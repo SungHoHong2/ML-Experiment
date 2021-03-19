@@ -35,10 +35,12 @@ rows, cols, data = list(), list(), list()
 usr = 0
 for row in org_rows[:top]:
     usr = usr + 1
-    sim = cosine_similarity(sparseMatrixTrain.getrow(row), sparseMatrixTrain).ravel()
-    rows += [row] * top
-    cols += sim.argsort()[-top:]
-    data += sim[top_sim_ind]
+    sim = cosine_similarity(sparse_matrix.getrow(row), sparse_matrix).ravel()
+    idx = sim.argsort()[-top:]
+    val = sim[idx]
+    rows.extend([row] * top)
+    cols.extend(idx)
+    data.extend(val)
     if temp % 20 == 0:
         print("computing done for "+str(usr)+" users")
 
