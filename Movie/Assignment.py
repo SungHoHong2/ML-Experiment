@@ -56,7 +56,7 @@ id = 40
 movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
                            names=['movie_id', 'year_of_release', 'title'], verbose=True,
                       index_col = 'movie_id', encoding = "ISO-8859-1")
-print("\nMovie",movie_titles.loc[mv_id].values[1])
+print("\nMovie",movie_titles.loc[id].values[1])
 print("\nIt has {} Ratings.".format(sparseMatrixTrain[:,id].getnnz()))
 print("\nWe have {} movies which are similar to this movie".format(m_m_sim_sparse[:,id].getnnz()))
 
