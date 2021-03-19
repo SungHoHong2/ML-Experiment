@@ -101,7 +101,7 @@ def compute_user_similarity(sparse_matrix, compute_for_few=False, top=100, verbo
     return sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users)), time_taken
 
 
-print('FRISK:',spareMatrixTrain.shape, spareMatrixTrain,T)
+print('FRISK:',spareMatrixTrain.shape, spareMatrixTrain.T)
 
 u_u_sim_sparse, _ = compute_user_similarity(spareMatrixTrain, compute_for_few=True, top = 100, verbose=True)
 sparse.save_npz(PATH+"u_u_sim_sparse.npz", u_u_sim_sparse)
