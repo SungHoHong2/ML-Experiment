@@ -31,16 +31,14 @@ org_rows, org_cols = sparseMatrixTrain.nonzero()
 org_rows = sorted(set(org_rows))
 # FIXME: Compute only to 100 users (100 ~ all)
 top = 100
-rows,cols,data = [],[],[]
+rows, cols, data = list(), list(), list()
 usr = 0
 for row in org_rows[:top]:
     usr = usr + 1
     sim = cosine_similarity(sparseMatrixTrain.getrow(row), sparseMatrixTrain).ravel()
     rows += [row] * top
-    idx = sim.argsort()[-top:]
-    val = sim[idx]
-    cols += idx
-    data += val
+    cols += sim.argsort()[-top:]
+    data += sim[top_sim_ind]
     if temp % 20 == 0:
         print("computing done for "+str(usr)+" users")
 
