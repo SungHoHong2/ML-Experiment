@@ -10,7 +10,7 @@ current_movie = None
 # construct a total_data.csv (need to run only once)
 with open(PATH+'total_data.csv','w',newline='') as total_data:
     csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-    files = [PATH+'combined_data_1.txt',PATH+'combined_data_2.txt',PATH+'combined_data_3.txt']
+    files = [PATH+'combined_data_1.txt']
     for file in files:
         print("reading " + file)
         with open(file) as current_file:
