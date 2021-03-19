@@ -78,7 +78,7 @@ for row in row_ind[:top]:
     cols.extend(top_sim_ind)
     data.extend(top_sim_val)
     if temp % 20 == 0:
-        print("computing done for "+temp+" users")
+        print("computing done for "+str(temp)+" users")
 
 print('Creating Sparse matrix from the computed similarities')
 u_u_sim_sparse = sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users))
