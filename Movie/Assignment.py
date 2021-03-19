@@ -41,7 +41,7 @@ for row in org_rows[:top]:
     rows.extend([row] * top)
     cols.extend(idx)
     data.extend(val)
-    if temp % 20 == 0:
+    if usr % 20 == 0:
         print("computing done for "+str(usr)+" users")
 
 u_u_sim_sparse = sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users))
