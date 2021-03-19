@@ -32,7 +32,7 @@ org_rows = sorted(set(org_rows))
 # FIXME: Compute only to 100 users (100 ~ all)
 top = 100
 rows, cols, data = list(), list(), list()
-temp = 0
+usr = 0
 for row in org_rows[:top]:
     usr = usr + 1
     sim = cosine_similarity(sparseMatrixTrain.getrow(row), sparseMatrixTrain).ravel()
