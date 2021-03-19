@@ -24,6 +24,6 @@ print('number of people: ', len(enron_data.keys()))
 ans = list(enron_data.values())
 print('number of features: ', len(ans[0]))
 
-# for key, value in enron_data.items():
-#     print(key, value)
+for key, features in enron_data.items():
+    print(key, features)
 
