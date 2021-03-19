@@ -26,8 +26,13 @@ print('number of features: ', len(ans[0]))
 
 ans = 0
 for person, features in enron_data.items():
-    print(person, features)
+
+    if person == 'PRENTICE JAMES':
+        print('here?')
+    # print(person, features)
     if features['poi'] == 1 :
         ans += 1
 print('number of pois: ',ans)
+
+
 
