@@ -24,6 +24,10 @@ print('number of people: ', len(enron_data.keys()))
 ans = list(enron_data.values())
 print('number of features: ', len(ans[0]))
 
-for key, features in enron_data.items():
-    print(key, features)
+ans = 0
+for person, features in enron_data.items():
+    # print(person, features)
+    if features['poi'] == 1 :
+        ans += 1
+print('number of pois: ',ans)
 
