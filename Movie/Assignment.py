@@ -67,7 +67,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import TruncatedSVD
 from datetime import datetime
 
-sparseMatrixTrain = u_u_sim_sparse = sparse.load_npz(PATH+"sparseMatrixTest.npz")
+sparseMatrixTrain = u_u_sim_sparse = sparse.load_npz(PATH+"spareMatrixTrain.npz")
 sparseMatrixTest = u_u_sim_sparse = sparse.load_npz(PATH+"sparseMatrixTest.npz")
 us,mv = sparseMatrixTrain.shape
 elem = sparseMatrixTrain.count_nonzero()
