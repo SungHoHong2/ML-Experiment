@@ -6,12 +6,8 @@ import os
 
 PATH = "/home/sungho/Downloads/"
 
-# # create the sparse matrix
 from scipy import sparse
 from scipy.sparse import csr_matrix
-
-### TODO: Sungho, Yiting BEGIN
-
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import TruncatedSVD
 from datetime import datetime
@@ -64,4 +60,3 @@ print("\nMovie",movie_titles.loc[mv_id].values[1])
 print("\nIt has {} Ratings.".format(sparseMatrixTrain[:,id].getnnz()))
 print("\nWe have {} movies which are similar to this movie".format(m_m_sim_sparse[:,id].getnnz()))
 
-### TODO: Sungho, Yiting END
