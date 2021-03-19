@@ -107,7 +107,7 @@ print('u_u_sim_sparse shape', u_u_sim_sparse.shape)
 
 # Computing Movie-Movie Similarity matrix
 start = datetime.now()
-m_m_sim_sparse = cosine_similarity(X=spareMatrixTrain.T, dense_output=False)
+m_m_sim_sparse = cosine_similarity(spareMatrixTrain.T, dense_output=False)
 sparse.save_npz(PATH+"m_m_sim_sparse.npz", m_m_sim_sparse)
 m_m_sim_sparse = sparse.load_npz(PATH+"m_m_sim_sparse.npz")
 print('m_m_sim_sparse shape', m_m_sim_sparse.shape)
