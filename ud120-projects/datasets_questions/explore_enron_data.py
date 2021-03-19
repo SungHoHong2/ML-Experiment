@@ -30,7 +30,10 @@ for person, features in enron_data.items():
     # if person == 'PRENTICE JAMES':
     #     print(features)
 
-    if person == 'COLWELL WESLEY':
+    # if person == 'COLWELL WESLEY':
+    #     print(features)
+
+    if person == 'SKILLING JEFFREY K':
         print(features)
 
     if features['poi'] == 1 :
