@@ -31,7 +31,7 @@ org_rows, org_cols = sparseMatrixTrain.nonzero()
 org_rows = sorted(set(org_rows))
 # FIXME: Compute only to 100 users (100 ~ all)
 top = 100
-rows, cols, data = list(), list(), list()
+rows,cols,data = [],[],[]
 usr = 0
 for row in org_rows[:top]:
     usr = usr + 1
