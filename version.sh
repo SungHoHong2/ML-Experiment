@@ -11,7 +11,7 @@ then
 
 elif [ "$1" = "Movie" ]
 then
-  python3 Movie/App.py
+  python3 Movie/Assignment.py
 
 elif [ "$1" = "Naive" ]
 then
