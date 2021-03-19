@@ -8,22 +8,22 @@ PATH = "/home/sungho/Downloads/"
 current_movie = None
 
 # construct a total_data.csv (need to run only once)
-# with open(PATH+'total_data.csv','w',newline='') as total_data:
-#     csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-#     files = [PATH+'combined_data_1.txt',PATH+'combined_data_2.txt',PATH+'combined_data_3.txt', PATH+'combined_data_4.txt']
-#     for file in files:
-#         print("reading " + file)
-#         with open(file) as current_file:
-#             for current_row in current_file:
-#                 current_row = current_row.strip()
-#                 if current_row[-1] == ":":
-#                     current_movie = current_row[:len(current_row)-1]
-#                 else:
-#                     new_row = [current_movie]
-#                     for element in current_row.split(","):
-#                         new_row.append(element)
-#                     csv_writer.writerow(new_row)
-#         print("completed " + file +"\n")
+with open(PATH+'total_data.csv','w',newline='') as total_data:
+    csv_writer = csv.writer(total_data, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+    files = [PATH+'combined_data_1.txt',PATH+'combined_data_2.txt',PATH+'combined_data_3.txt', PATH+'combined_data_4.txt']
+    for file in files:
+        print("reading " + file)
+        with open(file) as current_file:
+            for current_row in current_file:
+                current_row = current_row.strip()
+                if current_row[-1] == ":":
+                    current_movie = current_row[:len(current_row)-1]
+                else:
+                    new_row = [current_movie]
+                    for element in current_row.split(","):
+                        new_row.append(element)
+                    csv_writer.writerow(new_row)
+        print("completed " + file +"\n")
 
 data_frame = pd.read_csv(PATH+'/total_data.csv', sep=',', names=['movieId', 'userId','currentRating','date'])
 data_frame.date = pd.to_datetime(data_frame.date)
@@ -46,6 +46,10 @@ print("Number of unique movies in train data = "+str(len(np.unique(train_data["m
 print("Highest value of a User ID = "+str(max(train_data["userId"].values)))
 print("Highest value of a Movie ID = "+str(max(train_data["movieId"].values)))
 
+import time
+while True:
+    time.sleep(5)
+
 # create the sparse matrix
 from scipy import sparse
 from scipy.sparse import csr_matrix
@@ -59,9 +63,6 @@ sparse.save_npz("sparseMatrixTest.npz", sparseMatrixTest)
 us,mv = sparseMatrixTest.shape
 elem = sparseMatrixTest.count_nonzero()
 print("Sparsity of Testing matrix : {} % ".format(  (1-(elem/(us*mv))) * 100) )
-
-
-
 
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.decomposition import TruncatedSVD
@@ -100,14 +101,10 @@ def compute_user_similarity(sparse_matrix, compute_for_few=False, top=100, verbo
     if verbose: print('Creating Sparse matrix from the computed similarities')
     return sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users)), time_taken
 
-
-print('FRISK:',spareMatrixTrain.shape, spareMatrixTrain.T)
-
 u_u_sim_sparse, _ = compute_user_similarity(spareMatrixTrain, compute_for_few=True, top = 100, verbose=True)
 sparse.save_npz(PATH+"u_u_sim_sparse.npz", u_u_sim_sparse)
 u_u_sim_sparse = sparse.load_npz(PATH+"u_u_sim_sparse.npz")
 print('u_u_sim_sparse shape', u_u_sim_sparse.shape)
-
 
 # Computing Movie-Movie Similarity matrix
 m_m_sim_sparse = cosine_similarity(spareMatrixTrain.T, dense_output=False)
@@ -124,12 +121,11 @@ for movie in movie_ids:
 
 # testing simlilar movies for movie 20
 # print(similar_movies[20])
+# movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
+#                            names=['movie_id', 'year_of_release', 'title'], verbose=True,
+#                       index_col = 'movie_id', encoding = "ISO-8859-1")
 
-movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
-                           names=['movie_id', 'year_of_release', 'title'], verbose=True,
-                      index_col = 'movie_id', encoding = "ISO-8859-1")
-
-# example predicting similar movies
+# example predicting similar movies id =40
 mv_id = 40
 print("\nMovie ----->",movie_titles.loc[mv_id].values[1])
 print("\nIt has {} Ratings.".format(spareMatrixTrain[:,mv_id].getnnz()))
