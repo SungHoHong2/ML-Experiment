@@ -40,16 +40,16 @@ for row in org_rows[:top]:
     if usr % 20 == 0:
         print("computing done for "+str(usr)+" users")
 
-u_u_sim_sparse = sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users))
-sparse.save_npz(PATH+"UserSimilarityMatrix.npz", u_u_sim_sparse)
-u_u_sim_sparse = sparse.load_npz(PATH+"UserSimilarityMatrix.npz")
-print('User Similarity Matrix Shape', u_u_sim_sparse.shape)
+UserSimilarity = sparse.csr_matrix((data, (rows, cols)), shape=(no_of_users, no_of_users))
+sparse.save_npz(PATH+"UserSimilarityMatrix.npz", UserSimilarity)
+UserSimilarity = sparse.load_npz(PATH+"UserSimilarityMatrix.npz")
+print('User Similarity Matrix Shape', UserSimilarity.shape)
 
 # Computing Movie-Movie Similarity matrix
-m_m_sim_sparse = cosine_similarity(sparseMatrixTrain.T, dense_output=False)
-sparse.save_npz(PATH+"MovieSimilarityMatrix.npz", m_m_sim_sparse)
-m_m_sim_sparse = sparse.load_npz(PATH+"MovieSimilarityMatrix.npz")
-print('Movie Similarity Matrix Shape', m_m_sim_sparse.shape)
+MovieSimilarity = cosine_similarity(sparseMatrixTrain.T, dense_output=False)
+sparse.save_npz(PATH+"MovieSimilarityMatrix.npz", MovieSimilarity)
+MovieSimilarity = sparse.load_npz(PATH+"MovieSimilarityMatrix.npz")
+print('Movie Similarity Matrix Shape', MovieSimilarity.shape)
 
 # FIXME: example predicting similar movies id =40
 id = 40
@@ -58,5 +58,4 @@ movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
                       index_col = 'movie_id', encoding = "ISO-8859-1")
 print("\nMovie",movie_titles.loc[id].values[1])
 print("\nIt has {} Ratings.".format(sparseMatrixTrain[:,id].getnnz()))
-print("\nWe have {} movies which are similar to this movie".format(m_m_sim_sparse[:,id].getnnz()))
-
+print("\nWe have {} movies which are similar to this movie".format(MovieSimilarity[:,id].getnnz()))
