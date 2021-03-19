@@ -46,7 +46,7 @@ print("Number of unique movies in train data = "+str(len(np.unique(train_data["m
 print("Highest value of a User ID = "+str(max(train_data["userId"].values)))
 print("Highest value of a Movie ID = "+str(max(train_data["movieId"].values)))
 
-# create the spares matrix
+# create the sparse matrix
 from scipy import sparse
 from scipy.sparse import csr_matrix
 spareMatrixTrain = sparse.csr_matrix((train_data.currentRating.values, (train_data.userId.values,train_data.movieId.values)),)
@@ -59,6 +59,8 @@ sparse.save_npz("sparseMatrixTest.npz", sparseMatrixTest)
 us,mv = sparseMatrixTest.shape
 elem = sparseMatrixTest.count_nonzero()
 print("Sparsity of Testing matrix : {} % ".format(  (1-(elem/(us*mv))) * 100) )
+
+
 
 
 from sklearn.metrics.pairwise import cosine_similarity
@@ -101,26 +103,24 @@ def compute_user_similarity(sparse_matrix, compute_for_few=False, top=100, verbo
 u_u_sim_sparse, _ = compute_user_similarity(spareMatrixTrain, compute_for_few=True, top = 100, verbose=True)
 sparse.save_npz(PATH+"u_u_sim_sparse.npz", u_u_sim_sparse)
 u_u_sim_sparse = sparse.load_npz(PATH+"u_u_sim_sparse.npz")
-print(u_u_sim_sparse.shape)
-
-# TODO: I believe I have to save the n_n_simp_sparse.npz like what they do I guess...
+print('u_u_sim_sparse shape', u_u_sim_sparse.shape)
 
 # Computing Movie-Movie Similarity matrix
 start = datetime.now()
 m_m_sim_sparse = cosine_similarity(X=spareMatrixTrain.T, dense_output=False)
 sparse.save_npz(PATH+"m_m_sim_sparse.npz", m_m_sim_sparse)
 m_m_sim_sparse = sparse.load_npz(PATH+"m_m_sim_sparse.npz")
-print(m_m_sim_sparse.shape)
-similar_movies = dict()
+print('m_m_sim_sparse shape', m_m_sim_sparse.shape)
 
 # Finding most similar movies using similarity matrix
 movie_ids = np.unique(m_m_sim_sparse.nonzero()[1])
+similar_movies = dict()
 for movie in movie_ids:
     sim_movies = m_m_sim_sparse[movie].toarray().ravel().argsort()[::-1][1:]
     similar_movies[movie] = sim_movies[:100]
 
 # testing simlilar movies for movie 20
-print(similar_movies[20])
+# print(similar_movies[20])
 
 movie_titles = pd.read_csv(PATH+"movie_titles.csv", sep=',', header = None,
                            names=['movie_id', 'year_of_release', 'title'], verbose=True,
