@@ -27,7 +27,9 @@ z = y.add_(x)
 # print out all the rows of column 0
 x = torch.rand(5,3)
 print(x)
+
 print(x[:, 0])
+
 
 
 

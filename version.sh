@@ -18,11 +18,10 @@ then
   cd ud120-projects/naive_bayes
   python3 nb_author_id.py
 
-elif [ "$1" = "Pytorch" ]
+elif [ "$1" = "CNN" ]
 then
-  cd ML_Pytorch_Intro
-  python3 pytorch_tutorial.py
-
+  cd CNN
+  python3 $2.py
 
 else
   echo "no argument"
