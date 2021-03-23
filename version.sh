@@ -18,20 +18,11 @@ then
   cd ud120-projects/naive_bayes
   python3 nb_author_id.py
 
-elif [ "$1" = "SVM" ]
+elif [ "$1" = "Pytorch" ]
 then
-  cd ud120-projects/svm
-  python3 svm_author_id.py
+  cd ML_Pytorch_Intro
+  python3 pytorch_tutorial.py
 
-elif [ "$1" = "DT" ]
-then
-  cd ud120-projects/decision_tree
-  python3 dt_author_id.py
-
-elif [ "$1" = "Dataset" ]
-then
-  cd ud120-projects/datasets_questions
-  python3 explore_enron_data.py
 
 else
   echo "no argument"
