@@ -18,12 +18,18 @@ x = torch.tensor([2.5,0.1])
 # adding the tensor
 x = torch.rand(2,2)
 y = torch.rand(2,2)
-print(x)
-print(y)
+# print(x)
+# print(y)
 z = x + y
 z = torch.add(x,y)
 z = y.add_(x)
-print(z)
+# print(z)
+# print out all the rows of column 0
+x = torch.rand(5,3)
+print(x)
+print(x[:, 0])
+
+
 
 
 
