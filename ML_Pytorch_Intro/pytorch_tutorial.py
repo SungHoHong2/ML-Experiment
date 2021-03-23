@@ -21,6 +21,8 @@ y = torch.rand(2,2)
 print(x)
 print(y)
 z = x + y
+z = torch.add(x,y)
+z = y.add_(x)
 print(z)
 
 
