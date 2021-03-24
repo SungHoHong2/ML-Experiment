@@ -82,5 +82,5 @@ t = torch.tensor([
     [0,3,0]
 ], dtype=torch.float32)
 
-print(t.sum(), t.sum().numel, t.numel)
+print(t.sum(), t.sum().numel(), t.numel())
 
