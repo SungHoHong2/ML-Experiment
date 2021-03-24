@@ -43,9 +43,13 @@ batch = next(iter(train_loader))
 print(len(batch))
 images, labels = batch
 print(len(images), len(labels))
+# 10 batches, 1 color, y=28, x=28
+print(images.shape)
+# 10 batches
+print(labels.shape)
 
+grid = torch
 
-
-
-
+# http://localhost:8888/lab?token=33923aa70f01c416fcaaca14dde2cc9e0c0e6b7d5b43486c
+# http://192.168.0.15:8004/lab?token=33923aa70f01c416fcaaca14dde2cc9e0c0e6b7d5b43486c
 
