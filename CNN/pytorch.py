@@ -72,6 +72,6 @@ t3 = torch.tensor([
     [1,1]
 ], dtype = torch.float32)
 
-print(t1 + t2, t1 + t3)
+print(t1 + t2 == t1 + t3)
 
 
