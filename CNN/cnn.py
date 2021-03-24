@@ -11,6 +11,13 @@ train_set = torchvision.datasets.FashionMNIST(
     ])
 )
 
-train_loader = torch.utils.data.DataLoader(train_set)
+# allows to shuffle, and provie batch-size of the data
+train_loader = torch.utils.data.DataLoader(train_set, batch_size = 10)
+
+
+
+
+
+
 
 
