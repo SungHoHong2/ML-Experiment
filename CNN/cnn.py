@@ -32,6 +32,7 @@ reading a training sample
 sample = next(iter(train_set))
 print(len(sample))
 image, label = sample
+print(image, label)
 
 
 
