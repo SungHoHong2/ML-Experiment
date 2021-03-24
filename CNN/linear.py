@@ -18,6 +18,6 @@ def multiply(num, array1):
     return res
 
 
-
 print(plus([8.218,-9.341], [-1.129,2.111]))
-
+print(minus([7.119,8.215], [-8.223,0.878]))
+print(multiply(7.41, [1,671, -1.012, -0.318]))
