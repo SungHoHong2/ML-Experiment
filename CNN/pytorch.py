@@ -20,7 +20,22 @@ def flatten(t):
     t = t.reshape(1,-1)
     t = t.squeeze()
     return t
-print(flatten(t))
+# print(flatten(t))
+
+
+# combine multiple tensors as a batch
+t1 = torch.Tensor([[1, 1, 1],
+                   [1, 1, 1],
+                   [1, 1, 1]])
+t2 = torch.Tensor([[1, 1, 1],
+                   [1, 1, 1],
+                   [1, 1, 1]])
+t3 = torch.Tensor([[1, 1, 1],
+                   [1, 1, 1],
+                   [1, 1, 1]])
+
+t = torch.stack((t1,t2,t3))
+print(t)
 
 
 
