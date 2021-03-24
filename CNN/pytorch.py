@@ -83,4 +83,9 @@ t = torch.tensor([
 ], dtype=torch.float32)
 
 print(t.sum(), t.sum().numel(), t.numel())
+print(t.prod(), t.mean(), t.std())
+
+
+print("aggregate the rows", t.sum(dim=0))
+print("aggregate the cols", t.sum(dim=1))
 
