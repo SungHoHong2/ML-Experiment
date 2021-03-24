@@ -30,12 +30,16 @@ reading the training set
 reading a training sample 
 """
 sample = next(iter(train_set))
+sample = train_set[0]
 print(len(sample))
+# return a 2D array with a label
 image, label = sample
 print(image, label)
 
-
-
+"""
+reading from a batch sample 
+"""
+batch = next(iter(train_loader))
 
 
 
