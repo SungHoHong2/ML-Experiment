@@ -72,6 +72,15 @@ t3 = torch.tensor([
     [1,1]
 ], dtype = torch.float32)
 
-print(t1 + t2 == t1 + t3)
+# print(t1 + t2)
+# print(t1 + t3)
 
+# Reduction operation
+t = torch.tensor([
+    [0,1,0],
+    [2,0,2],
+    [0,3,0]
+], dtype=torch.float32)
+
+print(t.sum(), t.sum().numel, t.numel)
 
