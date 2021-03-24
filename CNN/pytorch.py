@@ -36,6 +36,7 @@ t3 = torch.Tensor([[1, 1, 1],
 
 t = torch.stack((t1,t2,t3))
 print(t)
+print(t.shape)
 
 
 
