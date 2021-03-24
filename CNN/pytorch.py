@@ -10,6 +10,11 @@ print(t.shape)
 print(t.reshape(1,9))
 
 
+# Create tensors without data
+print(torch.eye(2))
+print(torch.zeros(2,2))
+print(torch.ones(2,2))
+print(torch.rand(2,2))
 
 
 
