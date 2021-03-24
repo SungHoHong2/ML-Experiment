@@ -29,15 +29,15 @@ t1 = torch.Tensor([[1, 1, 1, 1],
                    [1, 1, 1, 1],
                    [1, 1, 1, 1]
                    ])
-t2 = torch.Tensor([[1, 1, 1, 1],
-                   [1, 1, 1, 1],
-                   [1, 1, 1, 1],
-                   [1, 1, 1, 1]
+t2 = torch.Tensor([[2, 2, 2, 2],
+                   [2, 2, 2, 2],
+                   [2, 2, 2, 2],
+                   [2, 2, 2, 2]
                    ])
-t3 = torch.Tensor([[1, 1, 1, 1],
-                   [1, 1, 1, 1],
-                   [1, 1, 1, 1],
-                   [1, 1, 1, 1]
+t3 = torch.Tensor([[3, 3, 3, 3],
+                   [3, 3, 3, 3],
+                   [3, 3, 3, 3],
+                   [3, 3, 3, 3]
                    ])
 
 t = torch.stack((t1,t2,t3))
@@ -53,8 +53,7 @@ print("first item in the batch", t[0])
 print('first color channel',t[0][0])
 print('first row',t[0][0][0])
 print('first column',t[0][0][0][0])
-
-
+print(t.flatten())
 
 
 
