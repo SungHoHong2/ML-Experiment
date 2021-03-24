@@ -2,6 +2,10 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 
+import numpy as np
+import matplotlib.pyplot as plt
+torch.set_printoptions(linewidth=120)
+
 train_set = torchvision.datasets.FashionMNIST(
     root = './data/FashionMNIST',
     train=True, # data for the training set
@@ -14,7 +18,9 @@ train_set = torchvision.datasets.FashionMNIST(
 # allows to shuffle, and provie batch-size of the data
 train_loader = torch.utils.data.DataLoader(train_set, batch_size = 10)
 
-
+print(len(train_set))
+print(train_set.train_labels)
+print(train_set.train_labels.bincount())
 
 
 
