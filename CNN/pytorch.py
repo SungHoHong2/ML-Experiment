@@ -24,19 +24,40 @@ def flatten(t):
 
 
 # combine multiple tensors as a batch
-t1 = torch.Tensor([[1, 1, 1],
-                   [1, 1, 1],
-                   [1, 1, 1]])
-t2 = torch.Tensor([[1, 1, 1],
-                   [1, 1, 1],
-                   [1, 1, 1]])
-t3 = torch.Tensor([[1, 1, 1],
-                   [1, 1, 1],
-                   [1, 1, 1]])
+t1 = torch.Tensor([[1, 1, 1, 1],
+                   [1, 1, 1, 1],
+                   [1, 1, 1, 1],
+                   [1, 1, 1, 1]
+                   ])
+t2 = torch.Tensor([[1, 1, 1, 1],
+                   [1, 1, 1, 1],
+                   [1, 1, 1, 1],
+                   [1, 1, 1, 1]
+                   ])
+t3 = torch.Tensor([[1, 1, 1, 1],
+                   [1, 1, 1, 1],
+                   [1, 1, 1, 1],
+                   [1, 1, 1, 1]
+                   ])
 
 t = torch.stack((t1,t2,t3))
 print(t)
+# [ batch size, height, width ]
 print(t.shape)
+
+
+# reshape into [batch size, color channel, height, width]
+t = t.reshape(3,1,4,4)
+
+print("first item in the batch", t[0])
+print('first color channel',t[0][0])
+print('first row',t[0][0][0])
+print('first column',t[0][0][0][0])
+
+
+
+
+
 
 
 
