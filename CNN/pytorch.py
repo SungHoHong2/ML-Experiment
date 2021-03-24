@@ -84,8 +84,18 @@ t = torch.tensor([
 
 print(t.sum(), t.sum().numel(), t.numel())
 print(t.prod(), t.mean(), t.std())
-
-
 print("aggregate the rows", t.sum(dim=0))
 print("aggregate the cols", t.sum(dim=1))
+
+# Argmax: returns the index value of the largest value from a flatten tensor perspective
+t = torch.tensor([
+    [1,0,0,2],
+    [0,3,3,0],
+    [4,0,0,5],
+],dtype=torch.float32)
+# returns the 11th index as the result
+print(t.max(), t.argmax())
+print(t.max(dim=0), t.argmax(dim=0))
+print(t.max(dim=1), t.argmax(dim=1))
+
 
