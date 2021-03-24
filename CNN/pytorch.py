@@ -53,8 +53,25 @@ t = t.reshape(3,1,4,4)
 # print('first row',t[0][0][0])
 # print('first column',t[0][0][0][0])
 
-print(t.flatten(), t.flatten().shape)
-print(t.flatten(start_dim=1), t.flatten(start_dim=1).shape)
+# print(t.flatten(), t.flatten().shape)
+# print(t.flatten(start_dim=1), t.flatten(start_dim=1).shape)
 
+
+# arithmetic operations
+t1 = torch.tensor([
+    [1,1],
+    [1,1]
+], dtype = torch.float32)
+
+t2 = torch.tensor([
+    [1,1],
+    [1,1]
+], dtype = torch.float32)
+
+t3 = torch.tensor([
+    [1,1]
+], dtype = torch.float32)
+
+print(t1 + t2, t1 + t3)
 
 
