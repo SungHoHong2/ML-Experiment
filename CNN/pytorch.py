@@ -53,7 +53,7 @@ t = t.reshape(3,1,4,4)
 # print('first row',t[0][0][0])
 # print('first column',t[0][0][0][0])
 
-print(t.flatten(), t.shape)
+print(t.flatten(), t.flatten().shape)
 
 
 
