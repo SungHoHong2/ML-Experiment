@@ -15,7 +15,7 @@ def multiply(num, array1):
     print(array1)
     res = list()
     for i in range(len(array1)):
-        print(res)
+        res.append(array1[i] * num)
     return res
 
 
