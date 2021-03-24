@@ -56,7 +56,6 @@ t = t.reshape(3,1,4,4)
 # print(t.flatten(), t.flatten().shape)
 # print(t.flatten(start_dim=1), t.flatten(start_dim=1).shape)
 
-
 # arithmetic operations
 t1 = torch.tensor([
     [1,1],
@@ -93,9 +92,8 @@ t = torch.tensor([
     [0,3,3,0],
     [4,0,0,5],
 ],dtype=torch.float32)
-# returns the 11th index as the result
+
+# Returns the 11th index as the result
 print(t.max(), t.argmax())
 print(t.max(dim=0), t.argmax(dim=0))
 print(t.max(dim=1), t.argmax(dim=1))
-
-
