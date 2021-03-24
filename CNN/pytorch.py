@@ -54,6 +54,7 @@ t = t.reshape(3,1,4,4)
 # print('first column',t[0][0][0][0])
 
 print(t.flatten(), t.flatten().shape)
+print(t.flatten(start_dim=1), t.flatten(start_dim=1).shape)
 
 
 
