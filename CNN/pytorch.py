@@ -22,7 +22,6 @@ def flatten(t):
     return t
 # print(flatten(t))
 
-
 # combine multiple tensors as a batch
 t1 = torch.Tensor([[1, 1, 1, 1],
                    [1, 1, 1, 1],
@@ -44,7 +43,6 @@ t = torch.stack((t1,t2,t3))
 # print(t)
 # [ batch size, height, width ]
 # print(t.shape)
-
 
 # reshape into [batch size, color channel, height, width]
 t = t.reshape(3,1,4,4)
